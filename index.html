@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra papel tijera!!!</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getComputerChoice() {
+        let choiceNumber = Math.floor(Math.random() * 3) + 1
+        console.log(choiceNumber);
+
+        return (choiceNumber == 1) ? "Rock"
+             : (choiceNumber == 2) ? "Paper"
+             : "Scissors";  
+    }
+
+    function getPlayerChoice() {
+        let choiceNumber = Math.floor(Math.random() * 3) + 1
+        console.log(choiceNumber);
+
+        return (choiceNumber == 1) ? "Rock"
+             : (choiceNumber == 2) ? "Paper"
+             : "Scissors";  
+    }
+
+    console.log(getComputerChoice());
+    console.log(getPlayerChoice());
+</script>
+</html>
