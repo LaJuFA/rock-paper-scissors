@@ -64,26 +64,38 @@
         }
 
         return result;
-
     }
 
     function playGame() {
 
-        let playerChoice;
-        let cpuChoice;
+        let player;
+        let cpu;
+        let result;
+
         let playerWins = 0;
         let cpuWins = 0;
 
         for (let i = 0; i < 5; i++) {
 
-        playerChoice = prompt("Introduce Rock, Paper or Scissors");
-        console.log("Player: " + playerChoice);
+            player = prompt("Introduce Rock, Paper or Scissors");
+            console.log("Player: " + player);
 
-        cpuChoice = getComputerChoice();
-        console.log("Computer: " + cpuChoice);
+            cpu = getComputerChoice();
+            console.log("Computer: " + cpu);
 
-        console.log(playRound(playerChoice,cpuChoice));
+            result = playRound(player,cpu);
+            console.log(result);
+
+            if (result.includes("win")) {
+                playerWins += 1;
+            } else if (result.includes("lose")) {
+                cpuWins += 1;
+            }
+
         }
+
+        return (playerWins > cpuWins) ? `Player wins! Player: ${playerWins} CPU: ${cpuWins}` 
+                : `CPU wins! CPU: ${cpuWins} Player: ${playerWins}`;
     }
 
     console.log(playGame());
