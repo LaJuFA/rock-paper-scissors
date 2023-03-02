@@ -28,7 +28,56 @@
              : "Scissors";  
     }
 
+
+    function playRound(playerChoice,cpuChoice) {
+
+        let result = "Draw";
+
+        if (/playerChoice/i == "Rock") {
+
+            switch (cpuChoice) {
+                case "Scissors":
+                    result = "You win! Rock beats Scissors";
+                break;
+
+                case "Paper":
+                    result = "You Lose! Paper beats Rock";
+                break;
+            }
+
+        } else if (/playerChoice/i == "Paper") {
+
+            switch (cpuChoice) {
+                case "Rock":
+                    result = "You win! Paper beats Rock";
+                break;
+
+                case "Scissors":
+                    result = "You Lose! Scissors beats Paper";
+                break;
+                }
+
+        } else {
+
+            switch (cpuChoice) {
+                case "Paper":
+                    result = "You win! Scissors beat Paper";
+                break;
+
+                case "Rock":
+                    result = "You Lose! Rock beats Scissors";
+                break;
+                }
+
+        }
+
+        return result;
+
+    }
+
     console.log(getComputerChoice());
     console.log(getPlayerChoice());
+
+
 </script>
 </html>
