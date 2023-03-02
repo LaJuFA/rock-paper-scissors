@@ -12,22 +12,11 @@
 <script>
     function getComputerChoice() {
         let choiceNumber = Math.floor(Math.random() * 3) + 1
-        console.log(choiceNumber);
 
         return (choiceNumber == 1) ? "Rock"
              : (choiceNumber == 2) ? "Paper"
              : "Scissors";  
     }
-
-    function getPlayerChoice() {
-        let choiceNumber = Math.floor(Math.random() * 3) + 1
-        console.log(choiceNumber);
-
-        return (choiceNumber == 1) ? "Rock"
-             : (choiceNumber == 2) ? "Paper"
-             : "Scissors";  
-    }
-
 
     function playRound(playerChoice,cpuChoice) {
 
@@ -78,12 +67,25 @@
 
     }
 
-    const player = getPlayerChoice();
-    console.log("Player: " + player);
+    function playGame() {
 
-    const computer = getComputerChoice();
-    console.log("Computer: " + computer);
+        let playerChoice;
+        let cpuChoice;
+        let playerWins = 0;
+        let cpuWins = 0;
 
-    console.log(playRound(player,computer));
+        for (let i = 0; i < 5; i++) {
+
+        playerChoice = prompt("Introduce Rock, Paper or Scissors");
+        console.log("Player: " + playerChoice);
+
+        cpuChoice = getComputerChoice();
+        console.log("Computer: " + cpuChoice);
+
+        console.log(playRound(playerChoice,cpuChoice));
+        }
+    }
+
+    console.log(playGame());
 </script>
 </html>
