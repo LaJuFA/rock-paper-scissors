@@ -6,12 +6,21 @@ function getComputerChoice() {
          : "Scissors";  
 }
 
+function appendResult(result) {
+
+    const ronda = document.createElement('p');
+    ronda.textContent = result;
+
+    resultados.appendChild(ronda)
+}
+
 function playRound(playerChoice) {
 
     const cpuChoice = getComputerChoice()
     let result = "Draw";
 
     console.log(cpuChoice);
+    console.log(playerChoice);
 
     if (playerChoice.toUpperCase() == "Rock".toUpperCase()) {
 
@@ -54,15 +63,33 @@ function playRound(playerChoice) {
 
     }
 
-    return result;
+    if (result.startsWith('You win!')) {
+        puntosJugador += 1;
+    } else if (result.startsWith('You lose!')) {
+        puntosCpu += 1;
+    }
+
+    appendResult(`Player: ${playerChoice} vs CPU: ${cpuChoice}`);
+    appendResult(`Puntos jugador: ${puntosJugador} / Puntos CPU: ${puntosCpu}`)
+
+    return puntosJugador === 5 ? `${result} | Se terminaron las 5 rondas ¡Ganaste!`
+            : puntosCpu === 5 ? `${result} | Se terminaron las 5 rondas ¡Perdiste!`
+            : `${result}`;
+
 }
 
+const resultados = document.querySelector("#resultados")
 const botones = document.getElementsByClassName('btn');
-console.log(botones);
+
+let puntosJugador = 0;
+let puntosCpu = 0;
 
 for (var i = 0; i < botones.length; i++) {
     botones[i].addEventListener('click', function (e) {
-            console.log(e.target.id);
-            console.log(playRound(e.target.id));
-        });
+        if (puntosJugador < 5 && puntosCpu < 5)  {
+            appendResult(playRound(e.currentTarget.id));
+        } else {
+            window.alert("¡Se terminaron las 5 rondas!")
+        }
+    });
 }
